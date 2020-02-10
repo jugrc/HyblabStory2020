@@ -1,7 +1,10 @@
 <template>
   <div>
     <div class="progress-line bg-darkblue">
-      <div class="percentage bg-yellow" :style="{'width': percentage + '%'}" />
+      <div
+        class="percentage bg-yellow"
+        :style="{'width': percentage + '%'}"
+      />
     </div>
     <div class="progress">
       <div
@@ -15,10 +18,15 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "ProgressBar",
   props: {
-    number: Number
+    number: {
+      type: Number,
+      default: 0
+    }
   },
   data: () => {
     return {
@@ -27,6 +35,9 @@ export default {
       animCurrent: true,
       transition: false
     };
+  },
+  computed: {
+    ...mapGetters(["getSceneId"])
   },
   watch: {
     index: function() {
@@ -50,12 +61,13 @@ export default {
         this.animCurrent = true;
       }
     },
-    "$store.state.currentSceneIndex": function() {
+    getSceneId: function() {
+      // Watcher on the currentSceneIndex of the store
       if (
         this.$store.state.currentSceneIndex <
         this.$store.state.nbScenes - 1
       ) {
-        this.index++;
+        this.index = this.$store.state.currentSceneIndex;
       }
     }
   }

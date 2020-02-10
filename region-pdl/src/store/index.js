@@ -10,22 +10,31 @@ export default new Vuex.Store({
     character: ""
   },
   mutations: {
-    nextScene(state, sceneId) {
-      state.currentSceneIndex += sceneId;
+    nextScene(state, inc) {
+      state.currentSceneIndex += inc;
+    },
+    setScene(state, sceneId) {
+      state.currentSceneIndex = sceneId;
     },
     setCharacter(state, name) {
       state.character = name;
     }
   },
   actions: {
-    nextScene({ commit }, { sceneId }) {
-      commit('nextScene', sceneId || 1);
+    nextScene({ commit }, { inc }) {
+      commit('nextScene', inc || 1);
+    },
+    setScene({ commit }, { sceneId }) {
+      commit('setScene', sceneId);
     },
     setCharacter({ commit }, { name }) {
       commit('setCharacter', name);
     }
   },
   getters: {
+    getSceneId: state => {
+      return state.currentSceneIndex;
+    },
     getCharacter: state => {
       return state.character === "dubois"
         ? "Mme Dubois"
