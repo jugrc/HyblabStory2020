@@ -1,6 +1,12 @@
 <template>
-  <div class="classic-btn bg-darkblue" :style="{width: width+'%', left: x+'%', top: y+'%'}">
-    <div class="text">{{ text }}</div>
+  <div
+    class="classic-btn bg-darkblue"
+    :style="{width: width+'%', left: x+'%', top: y+'%'}"
+  >
+    <div class="text">
+      {{ text }}
+    </div>
+    <slot />
   </div>
 </template>
 

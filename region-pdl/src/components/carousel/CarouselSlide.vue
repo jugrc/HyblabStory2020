@@ -1,5 +1,5 @@
 <template>
-  <transition name="slide">
+  <transition :name="getSceneTransition">
     <div
       v-show="visible"
       class="carouselSlide"
@@ -10,6 +10,8 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   props: {
     index: {
@@ -18,6 +20,7 @@ export default {
     }
   },
   computed: {
+    ...mapGetters(["getSceneTransition"]),
     visible() {
       return this.index === this.$store.state.currentSceneIndex;
     }

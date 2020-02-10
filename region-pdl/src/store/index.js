@@ -44,6 +44,9 @@ export default new Vuex.Store({
       return state.character === "dubois"
         ? "mme"
         : "m";
+    },
+    getSceneTransition: state => {
+      return state.currentSceneIndex === 0 ? 'fade' : 'slide';
     }
   },
   modules: {}
