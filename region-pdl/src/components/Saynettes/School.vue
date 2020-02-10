@@ -1,44 +1,72 @@
 <template>
   <div class="saynette">
-    <SimpleText :style="{textAlign: 'center'}" :x="15" :y="15" :width="70">
+    <SimpleText
+      :style="{textAlign: 'center'}"
+      :x="15"
+      :y="15"
+      :width="70"
+    >
       <p v-if="getCharacterGender === 'mme'">
         Juste à côté de l’entreprise dans laquelle travaille Mme Dubois,
         se trouve une école dans laquelle M. Moreau est professeur.
         Cette année, l’école a bénéficié d’une
-        <br />
+        <br>
         <b>aide de la Région</b> pour réaliser
         <b>des travaux d’isolation</b>.
       </p>
       <p v-if="getCharacterGender === 'm'">
         M. Moreau est professeur des écoles. Cette année, son école a bénéficié
-        <br />
+        <br>
         <b>d’une aide de la Région</b> pour réaliser
         <b>des travaux d’isolation</b>.
       </p>
     </SimpleText>
-    <SimpleText :x="48" :y="67.6" :width="45">
+    <SimpleText
+      :x="48"
+      :y="67.6"
+      :width="45"
+    >
       ÉCOLE
     </SimpleText>
 
-    <PlusButton v-model="closePopover1" class="plus1" :width="30" @open="closePopover(1)">
+    <PlusButton
+      v-model="closePopover1"
+      class="plus1"
+      :width="30"
+      @open="closePopover(1)"
+    >
       <p class="text">
         En 2018,
         <span class="red">140 bâtiments publics</span> ont bénéficié des aides de la Région pour la réhabilitation et la rénovation de leur isolation pour un montant total de
-        <br />
+        <br>
         <span class="red">21 millions d’euros.</span>
       </p>
     </PlusButton>
 
-    <PlusButton v-model="closePopover2" class="plus2" :width="30" @open="closePopover(2)">
+    <PlusButton
+      v-model="closePopover2"
+      class="plus2"
+      :width="30"
+      @open="closePopover(2)"
+    >
       <p class="text">
         En 2018, l’école de M. Moreau a pu toucher
         <span class="red">84 400 €</span> d’aides de la part de la Région.
       </p>
     </PlusButton>
 
-    <SimpleButton text="Continuer l'histoire" :width="23" :x="75" :y="90" @click.native="onNext" />
+    <SimpleButton
+      text="Continuer l'histoire"
+      :width="23"
+      :x="75"
+      :y="90"
+      @click.native="onNext"
+    />
     <Background class="svg" />
-    <RoadSVG v-if="getCharacterGender === 'm'" class="road-svg" />
+    <RoadSVG
+      v-if="getCharacterGender === 'm'"
+      class="road-svg"
+    />
   </div>
 </template>
 
@@ -82,7 +110,7 @@ export default {
     },
     onNext() {
       this.$store.dispatch("nextScene", {
-        sceneId: this.getCharacterGender === "m" ? -1 : 1
+        inc: this.getCharacterGender === "m" ? -1 : 1
       });
     }
   }

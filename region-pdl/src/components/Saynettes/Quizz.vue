@@ -232,7 +232,7 @@ export default {
       return array.sort(() => Math.random() - 0.5);
     },
     onNext() {
-      this.$store.dispatch("nextScene", { sceneId: null });
+      this.$store.dispatch("nextScene", {});
     },
     onSelectFirstQuestion(numero) {
       if (numero === 1) {

@@ -1,9 +1,14 @@
 <template>
   <div class="saynette">
-    <SimpleText :style="{textAlign: 'center'}" :x="15" :y="15" :width="70">
+    <SimpleText
+      :style="{textAlign: 'center'}"
+      :x="15"
+      :y="15"
+      :width="70"
+    >
       <span v-if="getCharacterGender === 'mme'">
         L’entreprise de Mme Dubois est engagée pour la transition énergétique et profite des aides de la Région.
-        <br />À présent, l’entreprise crée sa
+        <br>À présent, l’entreprise crée sa
         <b>
           propre énergie verte
           grâce à la biomasse
@@ -11,42 +16,71 @@
       </span>
       <span v-if="getCharacterGender === 'm'">
         À côté de l’école dans laquelle enseigne M. Moreau, se trouve l’entreprise de Mme Dubois.
-        <br />Elle est engagée pour la transition énergétique et profite des aides de la Région.
-        <br />À présent, elle crée sa
+        <br>Elle est engagée pour la transition énergétique et profite des aides de la Région.
+        <br>À présent, elle crée sa
         <b>
           propre énergie verte
           grâce à la biomasse
         </b>.
       </span>
     </SimpleText>
-    <PlusButton v-model="closePopover1" class="plus1" :width="20" @open="closePopover(1)">
+    <PlusButton
+      v-model="closePopover1"
+      class="plus1"
+      :width="20"
+      @open="closePopover(1)"
+    >
       <p class="text">
         La
         <span class="red">biomasse</span> utilise le méthane produit par la décomposition de déchets ménagers pour chauffer les bâtiments.
       </p>
     </PlusButton>
-    <PlusButton v-model="closePopover2" class="plus2" :width="20" @open="closePopover(2)">
+    <PlusButton
+      v-model="closePopover2"
+      class="plus2"
+      :width="20"
+      @open="closePopover(2)"
+    >
       <p class="text">
         Avec la biomasse, une entreprise peut produire
         <span class="red">113 000 MWh.</span>
       </p>
     </PlusButton>
-    <PlusButton v-model="closePopover3" class="plus3" :width="20" @open="closePopover(3)">
+    <PlusButton
+      v-model="closePopover3"
+      class="plus3"
+      :width="20"
+      @open="closePopover(3)"
+    >
       <p class="text">
         <span class="red">2 000 m³</span> de biogaz équivalent à
         <span class="red">1 tonne de pétrole.</span>
       </p>
     </PlusButton>
-    <PlusButton v-model="closePopover4" class="plus4" :width="20" @open="closePopover(4)">
+    <PlusButton
+      v-model="closePopover4"
+      class="plus4"
+      :width="20"
+      @open="closePopover(4)"
+    >
       <p class="text">
         En Pays de la Loire, la biomasse produit
         <span class="red">651 GWh.</span> Cela équivaut à
         <span class="red">56 000 tonnes de pétrole.</span>
       </p>
     </PlusButton>
-    <SimpleButton text="Continuer l'histoire" :width="23" :x="75" :y="90" @click.native="onNext" />
+    <SimpleButton
+      text="Continuer l'histoire"
+      :width="23"
+      :x="75"
+      :y="90"
+      @click.native="onNext"
+    />
     <CompanySVG class="svg" />
-    <RoadSVG v-if="getCharacterGender === 'mme'" class="road-svg" />
+    <RoadSVG
+      v-if="getCharacterGender === 'mme'"
+      class="road-svg"
+    />
   </div>
 </template>
 
@@ -79,7 +113,7 @@ export default {
   methods: {
     onNext() {
       this.$store.dispatch("nextScene", {
-        sceneId: this.getCharacterGender === "m" ? 2 : 1
+        inc: this.getCharacterGender === "m" ? 2 : 1
       });
     },
     closePopover(i) {

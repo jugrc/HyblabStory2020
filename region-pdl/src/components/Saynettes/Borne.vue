@@ -1,7 +1,12 @@
 <template>
   <div class="saynette">
     <Background class="svg" />
-    <SimpleText :width="70" :x="15" :y="15" :style="{textAlign: 'center'}">
+    <SimpleText
+      :width="70"
+      :x="15"
+      :y="15"
+      :style="{textAlign: 'center'}"
+    >
       Pour accompagner la transition énergétique, la Région participe au
       déploiement de bornes de recharge pour véhicules électriques sur
       l’ensemble du territoire ligérien. Ainsi, lorsque {{ getCharacter }} prend sa
@@ -9,13 +14,20 @@
       <b>borne à proximité</b>.
     </SimpleText>
 
-    <TrainSVG v-show="!nextInitiated" ref="movingTrain" class="train" />
+    <TrainSVG
+      v-show="!nextInitiated"
+      ref="movingTrain"
+      class="train"
+    />
 
     <Car class="car" />
 
     <BoatSVG class="boat" />
 
-    <PlusButton class="plus-button" :width="23">
+    <PlusButton
+      class="plus-button"
+      :width="23"
+    >
       <p class="text">
         En moyenne, on peut trouver une borne tous les
         <span class="red">13 km</span> dans toute la région.
@@ -81,7 +93,7 @@ export default {
         if (train.x + train.width < 0) {
           this.nextInitiated = true;
           this.$store.dispatch("nextScene", {
-            sceneId: this.getCharacterGender === "m" ? 2 : 1
+            inc: this.getCharacterGender === "m" ? 2 : 1
           });
         } else {
           setTimeout(this.goNext, 200);
