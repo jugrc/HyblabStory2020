@@ -84,7 +84,7 @@
       <br>Marine Boismain
     </SimpleText>
     <SimpleButton
-      text="Refaire l'histoire"
+      text="Recommencer"
       :width="23"
       :x="75"
       :y="90"
