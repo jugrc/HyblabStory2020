@@ -1,46 +1,95 @@
 <template>
   <div class="saynette">
     <LogoPolytech class="logoPolytech" />
-    <img src="@/assets/End/logo_agr.png" class="logoAgr" />
-    <img src="@/assets/End/logo_audencia.png" class="logoAudencia" />
-    <img src="@/assets/End/logo_hyblab.png" class="logoHyb" />
-    <img src="@/assets/End/logo_Nantes.png" class="logoNantes" />
-    <img src="@/assets/End/logo_OML.png" class="logoOML" />
+    <img
+      src="@/assets/End/logo_agr.png"
+      class="logoAgr"
+    >
+    <img
+      src="@/assets/End/logo_audencia.png"
+      class="logoAudencia"
+    >
+    <img
+      src="@/assets/End/logo_hyblab.png"
+      class="logoHyb"
+    >
+    <img
+      src="@/assets/End/logo_Nantes.png"
+      class="logoNantes"
+    >
+    <img
+      src="@/assets/End/logo_OML.png"
+      class="logoOML"
+    >
 
-    <TextTitle :x="40" :y="15">Félicitations !</TextTitle>
+    <TextTitle
+      :x="40"
+      :y="15"
+    >
+      Félicitations !
+    </TextTitle>
     <Background class="svg" />
 
-    <SimpleText :y="22" :style="{textAlign: 'center'}">
+    <SimpleText
+      :y="22"
+      :style="{textAlign: 'center'}"
+    >
       <p class="text">
         Désormais, vous en savez davantage sur les actions de la Région des Pays de la Loire pour la transition énergétique.
-        <br />Pour en savoir plus, rendez-vous sur :
-        <br />
-        <a class="darkblue" href="https://www.region-paysdelaloire.fr/energies/" target="_blank">
+        <br>Pour en savoir plus, rendez-vous sur :
+        <br>
+        <a
+          class="darkblue"
+          href="https://www.region-paysdelaloire.fr/energies/"
+          target="_blank"
+        >
           <b>www.region-paysdelaloire.fr/energies/</b>
         </a>
       </p>
     </SimpleText>
 
-    <SimpleText :y="45" :x="10" :width="20" :style="{textAlign: 'center'}">
+    <SimpleText
+      :y="45"
+      :x="10"
+      :width="20"
+      :style="{textAlign: 'center'}"
+    >
       <b>Storytelling :</b>
-      <br />Nina Naulleau
-      <br />Vinciane Le Borgne
+      <br>Nina Naulleau
+      <br>Vinciane Le Borgne
     </SimpleText>
 
-    <SimpleText :y="45" :x="35" :width="30" :style="{textAlign: 'center'}">
+    <SimpleText
+      :y="45"
+      :x="35"
+      :width="30"
+      :style="{textAlign: 'center'}"
+    >
       <b>Développement et intégration :</b>
-      <br />Julien Garcia
-      <br />Nicolas Vautier
-      <br />Mathis Le Berrigaud
-      <br />Xavier Tremillon
-      <br />Nathan Seva
+      <br>Julien Garcia
+      <br>Nicolas Vautier
+      <br>Mathis Le Berrigaud
+      <br>Xavier Tremillon
+      <br>Nathan Seva
     </SimpleText>
 
-    <SimpleText :y="45" :x="70" :width="20" :style="{textAlign: 'center'}">
+    <SimpleText
+      :y="45"
+      :x="70"
+      :width="20"
+      :style="{textAlign: 'center'}"
+    >
       <b>Direction artistique :</b>
-      <br />Mathilde Mousset
-      <br />Marine Boismain
+      <br>Mathilde Mousset
+      <br>Marine Boismain
     </SimpleText>
+    <SimpleButton
+      text="Refaire l'histoire"
+      :width="23"
+      :x="75"
+      :y="90"
+      @click.native="onNext"
+    />
   </div>
 </template>
 
@@ -49,6 +98,7 @@ import Background from "@/assets/End/background-end.svg";
 import TextTitle from "@/components/TextTitle";
 import SimpleText from "@/components/SimpleText";
 import LogoPolytech from "@/assets/End/logo-polytech.svg";
+import SimpleButton from "@/components/SimpleButton";
 
 export default {
   name: "Persos",
@@ -56,7 +106,15 @@ export default {
     Background,
     TextTitle,
     SimpleText,
-    LogoPolytech
+    LogoPolytech,
+    SimpleButton
+  },
+  methods: {
+    onNext() {
+      this.$store.dispatch("setScene", {
+        sceneId: 0
+      });
+    }
   }
 };
 </script>

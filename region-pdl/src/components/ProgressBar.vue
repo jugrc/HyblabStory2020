@@ -11,7 +11,7 @@
         v-for="n in number"
         :key="n"
         class="dot"
-        :class="{'current bg-lightgreen': n === index && animCurrent, 'bg-yellow': n < index, 'bg-blue': n > index || (!animCurrent && n === index)}"
+        :class="getDotClass(n)"
       />
     </div>
   </div>
@@ -40,7 +40,7 @@ export default {
     ...mapGetters(["getSceneId"])
   },
   watch: {
-    index: function() {
+    index() {
       this.animCurrent = false;
 
       let newPercentage = ((this.index - 1) / (this.number - 1)) * 100;
@@ -56,12 +56,12 @@ export default {
         }
       }, 25);
     },
-    percentage: function() {
+    percentage() {
       if (this.percentage > ((this.index - 1) / (this.number - 1)) * 100 - 2) {
         this.animCurrent = true;
       }
     },
-    getSceneId: function() {
+    getSceneId() {
       // Watcher on the currentSceneIndex of the store
       if (
         this.$store.state.currentSceneIndex <
@@ -69,6 +69,15 @@ export default {
       ) {
         this.index = this.$store.state.currentSceneIndex;
       }
+    }
+  },
+  methods: {
+    getDotClass(n) {
+      return {
+        'current bg-lightgreen': n === this.index && this.animCurrent,
+        'bg-yellow': n < this.index,
+        'bg-blue': n > this.index || (!this.animCurrent && n === this.index)
+      };
     }
   }
 };
