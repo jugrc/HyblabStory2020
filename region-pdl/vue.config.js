@@ -28,11 +28,11 @@ module.exports = {
   //               .options({ /* ... */ });
   //   }
 
-  // pwa: {
-  //   name: 'Pays De La Loire - Transition Énergétique',
-  //   themeColor: '#34495E',
-  //   msTileColor: '#000000',
-  //   appleMobileWebAppCapable: 'yes',
-  //   appleMobileWebAppStatusBarStyle: 'black'
-  // }
+  pwa: {
+    name: 'Pays De La Loire - Transition Énergétique',
+    themeColor: '#34495E',
+    msTileColor: '#000000',
+    appleMobileWebAppCapable: 'yes',
+    appleMobileWebAppStatusBarStyle: 'black'
+  }
 };
