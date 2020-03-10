@@ -4,7 +4,7 @@ module.exports = {
   // assetsPublicPath: '/region-pdl/'
   // }
 
-  publicPath: '/region-pdl/',
+  // publicPath: '/region-pdl/',
 
   lintOnSave: true,
   chainWebpack: (config) => {
